@@ -7,5 +7,5 @@ title: About Me
 Contact me：
  - Email: kins36936@gmail.com
 
- - GitHub: [Kinsluck](https://github.com/kinsluck"Kins")
+ - GitHub: [Kinsluck](https://github.com/kinsluck "Kins")
 
