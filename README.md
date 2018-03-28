@@ -1,4 +1,4 @@
-[kinsluck.github.io](kinsluck.github.io "my blog")
+[kinsluck.github.io](https://kinsluck.github.io/ "my blog")
 ===
 
 Deploy my blog on Github.
