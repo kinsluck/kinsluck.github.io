@@ -7,7 +7,7 @@ Deploy my blog on Github.
 
 [heiswayi/the-plain](https://github.com/heiswayi/the-plain "heiswayi/the-plain")
 
-[小李的杂货铺](https://mthli.github.io "小李的杂货铺") on GitHub.
+[小李的杂货铺](https://github.com/mthli/mthli.github.io "小李的杂货铺") on GitHub.
 
 ## License
     Copyright (c) 2018 kins
