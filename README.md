@@ -3,7 +3,7 @@
 
 Deploy my blog on Github.
 
-## Thanks
+## Thanks To
 
 [heiswayi/the-plain](https://github.com/heiswayi/the-plain "heiswayi/the-plain")
 
