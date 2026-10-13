@@ -1,0 +1,36 @@
+---
+title: RUINER 真实评测
+image: /content/games/ruiner-review/images/ruiner-1.jpg
+date: 2018-05-04
+category: 游戏
+slug: ruiner-review
+trending: true
+topPick: false
+popular: false
+---
+
+## 评分：9/10
+
+![RUINER](/content/games/ruiner-review/images/ruiner-1.jpg)
+
+游戏完成度很高，很容易上手，游玩过程特别爽快，是我玩过最好玩的俯视角射击游戏。首先这游戏的射击手感很好，大多数枪械的手感都非常舒服，可以说是完爆同类型的 helldiver ，完全没有 helldiver 里面的找不着准星的无力感，游戏的流畅度十足，上手玩起来就给人疯狂杀戮的爽快感。特别特别喜欢主角有相位移动的能力，这种能力或许过于强大，但是正是这个游戏爽快感的源泉。
+
+我也挺喜欢这个游戏的技能树，可以随意洗点，hardcore玩家甚至可以根据每个boss的特性去选择针对的加点方法，给玩家完全公平的游戏感。
+
+![RUINER](/content/games/ruiner-review/images/ruiner-6.jpg)
+
+游戏的美术风格我特别喜欢，我本身就是非常喜欢赛博朋克的画风，男主的头可能是整个游戏最具有赛博朋克特色的美术卖点,色彩和文字会根据不同的场所、对话、剧情而改变，这游戏里面的世界设定，人物设定，场景设定很对我的胃口。画面我也很满意，建模精细，画面流畅，让人赏心悦目，完全没有操作跟画面接不上的迟钝感觉。
+
+![RUINER](/content/games/ruiner-review/images/ruiner-3.gif)
+
+## 说说缺点：
+
+1. 我不太喜欢战斗后结算画面必须要狂按E跳过，不如学习猎天使魔女把结算信息放在右上角。
+2. 在主城里面画面的杂质太多（或许是因为冬季限定的特效），让人眼花，按TAB之后出现“她”的残影有点烦
+3. 某些战斗场景过于阴暗或者狭窄，视觉体验不太好
+
+![RUINER](/content/games/ruiner-review/images/ruiner-4.jpg)
+
+总的来说这是一个非常牛逼的游戏，游玩过程中给人的惊喜远远大于刚上手的时候，大家可以好好体验一下。
+
+![RUINER](/content/games/ruiner-review/images/ruiner-5.jpg)

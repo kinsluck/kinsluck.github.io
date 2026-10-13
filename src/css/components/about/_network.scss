@@ -1,0 +1,130 @@
+// Network component styles
+.network-wrapper {
+  margin-bottom: 5rem;
+
+  .section {
+    display: grid;
+    width: 100%;
+    grid-gap: 3rem;
+    grid-template-rows: auto auto;
+    grid-template-columns: 0.8fr 0.8fr 1fr 1fr;
+    grid-template-areas:
+      'about about about picture'
+      'openmastery openmastery openjournal card';
+    padding: 0;
+    margin-bottom: 5rem;
+
+    @media screen and (max-width: 991px) {
+      grid-gap: 3rem;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'about'
+        'picture'
+        'openmastery'
+        'openjournal'
+        'card';
+    }
+  }
+
+  .card-wrapper p {
+    padding: 0.7rem 0 0.8rem 0;
+  }
+
+  .subtitle {
+    margin-bottom: 0.5rem;
+    color: var(--primary-6);
+
+    @media screen and (max-width: 991px) {
+      font-size: 1.3rem;
+    }
+  }
+
+  .about {
+    grid-area: about;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    @media screen and (max-width: 991px) {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .picture {
+    grid-area: picture;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    @media screen and (max-width: 991px) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .openmastery {
+    grid-area: openmastery;
+  }
+
+  .openjournal {
+    grid-area: openjournal;
+  }
+
+  .network-card {
+    grid-area: card;
+    background-color: #ffd0b6;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 10px 25px #ffd0b65f;
+
+    @media screen and (max-width: 991px) {
+      padding: 2.5rem;
+    }
+  }
+
+  .network-card-btn {
+    border: 1px solid var(--grey-6);
+    border-radius: 0.6rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1.1rem;
+    position: relative;
+    text-decoration: none;
+
+    @media screen and (max-width: 1199px) {
+      padding: 0.5rem 0.2rem;
+    }
+
+    @media screen and (max-width: 991px) {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  .icon {
+    background-color: var(--card-icon-bg);
+    padding: 1rem;
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 25px #b6eaff95;
+    font-size: 1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    text-align: center;
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+}

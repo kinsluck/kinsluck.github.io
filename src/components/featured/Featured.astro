@@ -1,0 +1,51 @@
+---
+import Top from './Top.astro';
+import Trending from './Trending.astro';
+import Popular from './Popular.astro';
+import type { Post } from '../../utils/getPosts';
+import './features-styles.scss';
+
+interface Props {
+  topPickPosts?: Post[];
+  trendingPosts?: Post[];
+  popularPosts?: Post[];
+}
+
+const { 
+  topPickPosts = [], 
+  trendingPosts = [], 
+  popularPosts = [] 
+} = Astro.props;
+---
+
+<section class="featured-wrapper">
+  <div class="featured-section container">
+    <div class="row">
+      <Top posts={topPickPosts} />
+      <Trending posts={trendingPosts} />
+      <Popular posts={popularPosts} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-wrapper {
+    border-bottom: 1px solid var(--primary-1);
+  }
+
+  .featured-section {
+    padding: 5rem 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    .featured-section {
+      padding: 0 0 5rem 0;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .featured-section {
+      padding: 0 15px 0 15px;
+    }
+  }
+</style>

@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets';
+import { slugifyCategory } from '../utils/postHelpers';
+import { getColor } from '../utils/heroCategories';
+import { getAllPosts } from '../utils/getPosts';
+import undrawChoice from '../assets/undraw_choice.svg';
+
+const posts = await getAllPosts();
+const allCategories = [...new Set(posts.map(post => post.data.category))].sort();
+---
+
+<section class="all-categories-wrapper">
+  <div class="container categories-page">
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="section-title categories-title">全部分类</h1>
+        <div class="categories-list col-12">
+          {allCategories.map((category, index) => {
+            const color = getColor(category);
+            return (
+              <a
+                class="item not-blue"
+                key={index}
+                href={`/${slugifyCategory(category)}`}
+              >
+                <div
+                  class="category-color"
+                  style={`background-color: ${color};`}
+                ></div>
+                <div class="category">{category}</div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+      <div class="col-12 col-md-6 all-categories-img">
+        <Image
+          src={undrawChoice}
+          alt="Open Source Illustration"
+          class="all-categories-img"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .all-categories-wrapper .categories-page {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  .all-categories-wrapper .categories-page h1 {
+    margin-bottom: 4rem;
+    font-size: 180%;
+  }
+
+  .all-categories-wrapper .item {
+    display: flex;
+    align-items: center;
+    font-size: 120%;
+    text-decoration: none;
+  }
+
+  .all-categories-wrapper .category {
+    margin: 1rem 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .all-categories-wrapper .category-color {
+    width: 30px;
+    height: 30px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 10px;
+  }
+
+  .all-categories-wrapper .all-categories-img {
+    align-self: center;
+    padding: 5rem;
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media screen and (max-width: 767px) {
+    .all-categories-wrapper .item {
+      margin-bottom: 1rem;
+      width: 50%;
+      display: inline-flex;
+    }
+  }
+</style>

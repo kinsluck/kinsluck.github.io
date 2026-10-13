@@ -1,0 +1,20 @@
+---
+import { slugifyCategory } from '../utils/postHelpers';
+import { getAllPosts } from '../utils/getPosts';
+
+const posts = await getAllPosts();
+const categories = [...new Set(posts.map(post => post.data.category))];
+---
+
+<ul class="categories">
+  {categories.map((category) => (
+    <li key={category}>
+      <a
+        href={`/${slugifyCategory(category)}`}
+        class="category"
+      >
+        {category}
+      </a>
+    </li>
+  ))}
+</ul>

@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import SocialLinks from '../../constants/socialLinks';
+import Title from './Title.astro';
+import SidebarCard from './SidebarCard.astro';
+import logo from '../../assets/logo.png';
+import '../../css/components/sidebar/_sidebar-about.scss';
+---
+
+<SidebarCard>
+  <div class="about-wrapper">
+    <Title title="关于我" />
+    <Image
+      src={logo}
+      alt="Kins"
+      class="img"
+      width={100}
+      height={100}
+    />
+    <p>你好，我是 Kins。</p>
+    <p>「酷爱」是我记录动画、游戏与生活随笔的地方。</p>
+    <SocialLinks client:load className="sidebar-icons" />
+  </div>
+</SidebarCard>

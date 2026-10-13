@@ -1,0 +1,196 @@
+---
+import slugify from 'slugify';
+import { getColor } from '../../utils/heroCategories';
+import { resolveImagePath } from '../../utils/imagePath';
+import { calculateReadingTime, getCategoryUrl } from '../../utils/postHelpers';
+import { formatDateLong, formatDateShort } from '../../utils/formatDate';
+import type { Post } from '../../utils/getPosts';
+
+interface Props {
+  excerpt?: string;
+  frontmatter?: {
+    title?: string;
+    image?: string;
+    date?: string | Date;
+    category?: string;
+    slug?: string;
+  };
+  fields?: {
+    timeToRead?: {
+      words?: number;
+    };
+  };
+  data?: Post['data'];
+  readingTime?: Post['readingTime'];
+  slug?: string;
+}
+
+const { excerpt = '', frontmatter = {}, fields = {}, data, readingTime: postReadingTime, slug: postSlug } = Astro.props;
+const title = data?.title || frontmatter?.title || '';
+const image = data?.image || frontmatter?.image || '';
+const date = data?.date || frontmatter?.date || '';
+const category = data?.category || frontmatter?.category || '';
+const words = postReadingTime?.words || fields?.timeToRead?.words || 0;
+const slug = postSlug || frontmatter?.slug || slugify(title, { lower: true });
+
+const imageSrc = resolveImagePath(image);
+const categoryColor = getColor(category);
+const readingTimeMinutes = calculateReadingTime(words);
+const formattedDate = date ? formatDateLong(date) : '';
+const categoryUrl = category ? getCategoryUrl(category) : '';
+const postUrl = `${categoryUrl}/${slug}`;
+---
+
+<article class="post-wrapper card card-bg card-shadow">
+  <a href={postUrl}>
+    {imageSrc && (
+      <img 
+        src={imageSrc} 
+        alt={title} 
+        class="img" 
+        style="width: 100%; height: auto;"
+      />
+    )}
+  </a>
+
+  <div class="card-body category-page-card">
+    <a href={postUrl}>
+      <h3>{title}</h3>
+    </a>
+
+    <ul class="card-meta list-inline category-page-meta">
+      <li class="list-inline-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>{readingTimeMinutes} 分钟阅读</span>
+      </li>
+      <li class="list-inline-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>{formattedDate}</span>
+      </li>
+      <li class="list-inline-item">
+        <a
+          href={categoryUrl}
+          class="category-link"
+          style={`color: ${categoryColor}; background-color: ${categoryColor};`}
+        >
+          <div class="category-text-color">{category}</div>
+        </a>
+      </li>
+    </ul>
+    <a class="excerpt-link" href={postUrl}>
+      <p class="excerpt">{excerpt}</p>
+    </a>
+
+    <a class="btn btn-outline-primary" href={postUrl}>
+      阅读全文
+    </a>
+  </div>
+</article>
+
+<style>
+  .post-wrapper {
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .excerpt-link {
+    color: var(--grey-6);
+    text-decoration: none;
+  }
+
+  .category-page-card {
+    padding: 15px 25px 30px 25px;
+  }
+
+  .img {
+    margin-bottom: 1rem;
+    border-radius: var(--radius);
+    height: 17rem;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .category {
+    display: inline-block;
+    margin-bottom: 1rem;
+    background: var(--clr-grey-10);
+    padding: 0.25rem 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: var(--radius);
+    letter-spacing: var(--spacing);
+    color: var(--clr-grey-5);
+  }
+
+  .post-wrapper h3 {
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-transform: initial;
+  }
+
+  .post-wrapper p {
+    color: var(--clr-grey-5);
+    line-height: 1.8;
+  }
+
+  .category-page-meta {
+    margin-bottom: 1rem;
+  }
+
+  .category-page-meta .list-inline-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-right: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--grey-6);
+  }
+
+  .category-page-meta .list-inline-item svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  .category-page-meta .list-inline-item:not(:last-child) {
+    border-right: 1px solid #ebebeb;
+    padding-right: 1.2rem;
+  }
+
+  .category-page-meta .category-link {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+  }
+
+  @media (min-width: 600px) {
+    .img {
+      height: 20rem;
+    }
+  }
+
+  @media (min-width: 800px) {
+    .img {
+      height: 25rem;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .img {
+      height: 20rem;
+      max-height: 20rem;
+    }
+  }
+</style>

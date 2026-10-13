@@ -1,0 +1,18 @@
+// 404 page styles
+.error-page-wrapper .error-page {
+  background: white;
+
+  span {
+    font-size: 10rem;
+    color: var(--black);
+  }
+
+  h3 {
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+  }
+}
+
+.error-page-wrapper .btn-404 {
+  font-size: 150%;
+}

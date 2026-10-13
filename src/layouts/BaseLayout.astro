@@ -1,0 +1,97 @@
+---
+import '../css/main.css';
+import '../css/bootstrap-grid.min.css';
+import '../css/pages.scss';
+import '../css/components.scss';
+import NavbarWrapper from '../components/NavbarWrapper';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+  structuredData?: object | object[];
+}
+
+const { title, description, image, article, structuredData } = Astro.props;
+
+const siteMetadata = {
+  title: 'Passion in Life',
+  description: '酷爱 —— 记录我所热爱的一切：动画、游戏，以及生活里的碎碎念。',
+  url: import.meta.env.SITE || 'https://kinsluck.github.io',
+  defaultImage: '/logo.png',
+  twitterUsername: '',
+};
+
+const pageTitle = title || siteMetadata.title;
+const pageDescription = description || siteMetadata.description;
+const pageImage = image ? `${siteMetadata.url}${image}` : `${siteMetadata.url}${siteMetadata.defaultImage}`;
+const pageUrl = `${siteMetadata.url}${Astro.url.pathname}`;
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="image" content={pageImage} />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={pageImage} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:site_name" content={siteMetadata.title} />
+    <meta property="og:locale" content="zh_CN" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    {siteMetadata.twitterUsername && (
+      <meta name="twitter:creator" content={siteMetadata.twitterUsername} />
+    )}
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={pageImage} />
+    
+    {structuredData ? (
+      <>
+        {Array.isArray(structuredData) ? (
+          structuredData.map((data) => (
+            <script type="application/ld+json" set:html={JSON.stringify(data)} />
+          ))
+        ) : (
+          <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+        )}
+      </>
+    ) : (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org/",
+        "@type": "Organization",
+        "description": siteMetadata.description,
+        "url": siteMetadata.url,
+        "homepage": siteMetadata.url,
+        "name": siteMetadata.title
+      })} />
+    )}
+    
+    <link rel="canonical" href={pageUrl} />
+  </head>
+  <body>
+    <NavbarWrapper client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,71 @@
+.social-links-wrapper .nav-links {
+  display: none;
+}
+
+.social-links-wrapper .nav-icons {
+  display: none;
+}
+
+.social-links-wrapper .github-icon {
+  color: #4078c0;
+}
+
+.social-links-wrapper .twitter-icon {
+  color: #00acee;
+}
+
+.social-links-wrapper .reddit-icon {
+  color: orangered;
+}
+
+@media screen and (min-width: 800px) {
+  .social-links-wrapper .toggle-btn {
+    display: none;
+  }
+
+  .social-links-wrapper .nav-center {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 2rem;
+    align-items: center;
+  }
+
+  .social-links-wrapper .nav-links {
+    display: flex;
+    align-items: center;
+  }
+
+  .social-links-wrapper .page-link {
+    margin-right: 1rem;
+    color: var(--black);
+    font-weight: 500;
+    letter-spacing: var(--spacing);
+    font-size: 1rem;
+    transition: var(--transition);
+    font-family: var(--ff-secondary);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius);
+  }
+
+  .social-links-wrapper .page-link:hover {
+    background: var(--primary-5);
+    color: var(--primary-10);
+  }
+
+  .social-links-wrapper .nav-icons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .social-links-wrapper .nav-icons .social-icon {
+    font-size: 1.7rem;
+    transition: var(--transition);
+    margin: 0 0.5rem;
+  }
+
+  .social-links-wrapper .nav-icons .social-icon:hover {
+    color: var(--primary-5);
+    transform: translateY(-5px);
+  }
+}

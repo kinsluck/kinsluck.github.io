@@ -1,0 +1,60 @@
+{
+  "name": "passion-in-life-blog",
+  "description": "Kins 的个人博客「酷爱」(Passion in Life) —— 基于 Astro + Revista 主题",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "astro",
+    "blog",
+    "magazine",
+    "react",
+    "static-site",
+    "content-collections",
+    "typescript"
+  ],
+  "author": {
+    "name": "Kins",
+    "email": "kins36936@gmail.com",
+    "url": "https://kinsluck.github.io"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,astro}\"",
+    "type-check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/sitemap": "^3.7.0",
+    "@mdx-js/react": "^3.0.1",
+    "astro": "^5.6.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-feather": "^2.0.10",
+    "react-icons": "^5.4.0",
+    "reading-time": "^1.5.0",
+    "sass": "^1.83.0",
+    "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kinsluck/kinsluck.github.io.git"
+  },
+  "homepage": "https://kinsluck.github.io",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

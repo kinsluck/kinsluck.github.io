@@ -1,0 +1,16 @@
+// Featured section wrapper styles
+.featured-wrapper {
+  border-bottom: 1px solid var(--primary-1);
+}
+
+.featured-section {
+  padding: 5rem 0;
+
+  @media screen and (max-width: 767px) {
+    padding: 0 0 5rem 0;
+  }
+
+  @media screen and (max-width: 576px) {
+    padding: 0 15px 0 15px;
+  }
+}

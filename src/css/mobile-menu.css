@@ -1,0 +1,21 @@
+.mobile-menu-wrapper {
+  text-align: center;
+}
+
+.mobile-menu-wrapper .bmc-sm {
+  width: 220px;
+  height: auto;
+}
+
+.mobile-menu-wrapper .bmc-link {
+  display: block;
+  margin: 3rem auto 0;
+  text-align: center;
+}
+
+.mobile-menu-wrapper .support-us-link {
+  font-size: 2rem;
+  display: block;
+  color: var(--grey-10);
+  font-weight: 700;
+}

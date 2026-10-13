@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Posts from '../components/Posts/Posts.astro';
+import { getPostsByCategory, getAllPosts } from '../utils/getPosts';
+import { slugifyCategory } from '../utils/postHelpers';
+import { formatDateLong } from '../utils/formatDate';
+
+interface Props {
+  category: string;
+}
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  const categories = new Set(posts.map((post) => post.data.category));
+  
+  return Array.from(categories).map((category) => {
+    const categorySlug = slugifyCategory(category);
+    
+    return {
+      params: {
+        category: categorySlug,
+      },
+      props: {
+        categoryName: category,
+      },
+    };
+  });
+}
+
+const { categoryName } = Astro.props;
+const posts = await getPostsByCategory(categoryName);
+
+// Format posts to match expected structure
+const formattedPosts = posts.map((post) => ({
+  id: post.id,
+  slug: post.slug,
+  excerpt: post.excerpt,
+  frontmatter: {
+    title: post.data.title,
+    category: post.data.category,
+    date: formatDateLong(post.data.date),
+    image: post.data.image,
+  },
+  fields: {
+    timeToRead: {
+      words: post.readingTime.words,
+    },
+  },
+  readingTime: post.readingTime,
+  data: post.data,
+}));
+---
+
+<BaseLayout 
+  title={`${categoryName} | Passion in Life`}
+  description={`Passion in Life 中「${categoryName}」分类下的全部文章。`}
+>
+  <Posts posts={formattedPosts} title={categoryName} />
+</BaseLayout>

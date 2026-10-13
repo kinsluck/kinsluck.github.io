@@ -1,0 +1,40 @@
+---
+import Post from './Post.astro';
+import Sidebar from '../Sidebar/SidebarWide.astro';
+
+interface Props {
+  posts: any[];
+  title: string;
+}
+
+const { posts, title } = Astro.props;
+---
+
+<section class="posts container">
+  <div class="row">
+    <div class="col-lg-8 col-12">
+      <h3 class="section-title category-title">
+        <span>{title}</span>
+      </h3>
+      <div class="posts-container">
+        {posts.map((post) => (
+          <Post key={post.id} {...post} />
+        ))}
+      </div>
+    </div>
+    <Sidebar />
+  </div>
+</section>
+
+<style>
+  .posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  .posts-container .post-wrapper {
+    width: 100%;
+  }
+</style>

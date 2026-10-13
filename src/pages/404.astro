@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="404 | Passion in Life"
+  description="页面不存在"
+>
+  <section class="error-page-wrapper">
+    <section class="error-page">
+      <div class="page-center">
+        <span>404</span>
+        <h3>哎呀，页面走丢了。</h3>
+        <h3>你要找的内容不存在。</h3>
+        <a href="/" class="btn btn-outline-primary btn-404">
+          返回首页
+        </a>
+      </div>
+    </section>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-page-wrapper .error-page {
+    background: white;
+  }
+  
+  .error-page-wrapper .error-page span {
+    font-size: 10rem;
+    color: var(--black);
+  }
+  
+  .error-page-wrapper .error-page h3 {
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+  }
+
+  .error-page-wrapper .btn-404 {
+    font-size: 150%;
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Featured from '../components/featured/Featured.astro';
+import Notification from '../components/Notification.astro';
+import RecentPosts from '../components/RecentPosts.astro';
+import { getAllPosts } from '../utils/getPosts';
+
+const allPosts = await getAllPosts();
+const sortedPosts = allPosts.sort((a, b) => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+});
+
+const topPickPosts = sortedPosts.filter(post => post.data.topPick);
+const trendingPosts = sortedPosts.filter(post => post.data.trending);
+const popularPosts = sortedPosts.filter(post => post.data.popular);
+
+const recentPosts = sortedPosts.slice(0, 3);
+
+const siteMetadata = {
+  title: 'Passion in Life',
+  description: '酷爱 —— 记录我所热爱的一切：动画、游戏，以及生活里的碎碎念。',
+  url: import.meta.env.SITE || 'https://kinsluck.github.io',
+  image: '/logo.png',
+};
+---
+
+<BaseLayout 
+  title={`${siteMetadata.title} · 酷爱`}
+  description={siteMetadata.description}
+>
+  <Hero />
+  <Featured 
+    topPickPosts={topPickPosts}
+    trendingPosts={trendingPosts}
+    popularPosts={popularPosts}
+  />
+  <Notification />
+  <RecentPosts posts={recentPosts} />
+</BaseLayout>
