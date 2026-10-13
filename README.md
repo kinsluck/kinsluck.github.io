@@ -1,4 +1,4 @@
-# 酷爱 · Passion in Life
+# Passion in Life
 
 Kins 的个人博客。记录动画、游戏，以及生活里的碎碎念。
 

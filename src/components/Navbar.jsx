@@ -13,8 +13,8 @@ const Navbar = ({ toggle }) => {
             <a href="/" className="nav-logo not-blue">
               <img src={logo.src} alt="Passion in Life" width="100" height="100" />
               <div className="logo-text">
-                <span className="nav-word-open">酷</span>
-                <span className="nav-word-ed">爱</span>
+                <span className="nav-word-open">Passion</span>{' '}
+                <span className="nav-word-ed">in Life</span>
               </div>
             </a>
 
